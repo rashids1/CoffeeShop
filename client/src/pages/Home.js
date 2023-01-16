@@ -71,7 +71,7 @@ export default Home;
 const StyledHomePage = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #dfcbbb;
+  background-color: ${main};
   width: 100%;
   align-items: center;
 
@@ -121,6 +121,22 @@ const StyledHomePage = styled.div`
     color: ${main};
     font-size: 5em;
     text-align: left;
+  }
+
+  .center-section {
+    width: 95%;
+    background-color: ${second};
+    h2 {
+      font-size: 2em;
+    }
+    p {
+    }
+
+    .carousel {
+      border: 1px solid black;
+      width: 100%;
+      height: 50%;
+    }
   }
 
   footer {
