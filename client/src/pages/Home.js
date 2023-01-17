@@ -3,12 +3,25 @@ import logo from "../pictures/logo.png";
 import "../App.css";
 import { styles, colors } from "./globalStyles.js";
 import { useState } from "react";
-import { FiMenu } from "react-icons/fi";
+import { FiMenu, FiArrowRight, FiArrowLeft, FiX } from "react-icons/fi";
 import walpaper from "../pictures/walpaper.png";
+import Carousel from "./components/Carousel.js";
+import coffeeShop from "../pictures/coffeeShop.jpg";
+import Drawer from "./components/Drawer";
 
 const { main, second, third, white } = colors;
 
 const Home = () => {
+  const bodyStyle = document.body.style;
+  const [visibleDrawer, setVisibleDrawer] = useState(false);
+  const hideDrawer = () => {
+    setVisibleDrawer(!visibleDrawer);
+  };
+
+  visibleDrawer
+    ? (bodyStyle.overflowY = "hidden")
+    : (bodyStyle.overflowY = "auto");
+
   return (
     <StyledHomePage>
       <div className="navbar">
@@ -24,11 +37,20 @@ const Home = () => {
             />
           </div>
           <h4>
-            <FiMenu size={35} />
+            {visibleDrawer ? (
+              <FiX size={35} onClick={hideDrawer} />
+            ) : (
+              <FiMenu size={35} onClick={hideDrawer} />
+            )}
           </h4>
         </div>
       </div>
-
+      {visibleDrawer && (
+        <Drawer
+          visibleDrawer={visibleDrawer}
+          setVisibleDrawer={setVisibleDrawer}
+        />
+      )}
       <div className="walpaper">
         <h1 className="title">FRESH LOCAL COFFEE</h1>
         <button>Learn More</button>
@@ -43,24 +65,37 @@ const Home = () => {
             scrambled it to make a s
           </p>
         </div>
-
-        <div className="carousel">carousel slideshow</div>
+        <Carousel />
         <button>SEE ALL OUR DRINKS</button>
+      </div>
+
+      <div className="second-section">
+        <h3>VISIT OUR NEW SHOP</h3>
+        <div className="picture"></div>
+        <h5>369 Skymall Road, Montreal , Qc,H1O 2K6</h5>
+        <h5>405-689-9999</h5>
+        <button>
+          GET DIRECTIONS <span style={{ visibility: "hidden" }}> _</span>
+          <FiArrowRight />
+        </button>
       </div>
 
       <footer>
         <div className="footer-content">
           <div className="footer-block-1">
-            <h2>Explore Old Town Coffee</h2>
+            <h3>Explore Old Town Coffee</h3>
             <h5>About</h5>
             <h5>Types of Coffee</h5>
             <h5>Visit Us</h5>
           </div>
           <div className="footer-block-2">
-            <h2>Get in Touch</h2>
+            <h3>Get in Touch</h3>
             <h5>FAQ</h5>
             <h5>CONTACT US</h5>
           </div>
+          <p>
+            &#169; Old Town Coffee. All rights reserved Powered by Rashid Design{" "}
+          </p>
         </div>
       </footer>
     </StyledHomePage>
@@ -82,6 +117,9 @@ const StyledHomePage = styled.div`
     align-items: center;
     width: 100%;
     height: 10vh;
+    position: sticky;
+    top: 0;
+    z-index: 3;
 
     .navbar-content {
       display: flex;
@@ -121,9 +159,15 @@ const StyledHomePage = styled.div`
     color: ${main};
     font-size: 5em;
     text-align: left;
+    margin-left: 10px;
   }
 
   .center-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 12px 0px;
     width: 95%;
     background-color: ${second};
     h2 {
@@ -131,21 +175,64 @@ const StyledHomePage = styled.div`
     }
     p {
     }
+    button {
+      margin-top: 45px;
+      padding: 10px;
+      font-weight: bold;
+    }
+  }
 
-    .carousel {
-      border: 1px solid black;
-      width: 100%;
+  .second-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 12px 0px;
+    width: 95%;
+    background-color: ${second};
+    h2 {
+      font-size: 2em;
+    }
+    p {
+    }
+    h5 {
+      font-size: 1em;
+      margin: 25px 0 0 0;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 10px;
+      font-weight: bold;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .picture {
+      border: 5px solid black;
+      width: 80%;
       height: 50%;
+      background-image: url(${coffeeShop});
+      background-position: center;
+      background-size: cover;
     }
   }
 
   footer {
-    background-color: #383838;
+    background-color: ${second};
     width: 100vw;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    .footer-content {
+      width: 85%;
+    }
+    p {
+      margin-top: 60px;
+    }
   }
 `;
