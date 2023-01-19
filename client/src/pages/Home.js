@@ -10,6 +10,11 @@ import coffeeShop from "../pictures/coffeeShop.jpg";
 import Drawer from "./components/Drawer";
 import { useNavigate } from "react-router";
 
+//To do
+// adjust font of text
+//animations
+// make it responsive
+
 const { main, second, third, white } = colors;
 
 const Home = () => {
@@ -55,7 +60,9 @@ const Home = () => {
       )}
       <div className="walpaper">
         <h1 className="title">FRESH LOCAL COFFEE</h1>
-        <button>Learn More</button>
+        <button onClick={() => navigate("/under-construction")}>
+          Learn More
+        </button>
       </div>
 
       <div className="center-section">
@@ -86,14 +93,16 @@ const Home = () => {
         <div className="footer-content">
           <div className="footer-block-1">
             <h3>Explore Old Town Coffee</h3>
-            <h5>About</h5>
-            <h5>Types of Coffee</h5>
-            <h5>Visit Us</h5>
+            <h5 onClick={() => navigate("/under-construction")}>About us</h5>
+            <h5 onClick={() => navigate("/under-construction")}>
+              Types of Coffee
+            </h5>
+            <h5 onClick={() => navigate("/under-construction")}>Visit Us</h5>
           </div>
           <div className="footer-block-2">
             <h3>Get in Touch</h3>
-            <h5 onClick={() => navigate("/under-construction")}>FAQ</h5>
-            <h5>CONTACT US</h5>
+            <h5 onClick={() => navigate("/under-construction")}>Faq</h5>
+            <h5 onClick={() => navigate("/under-construction")}>Contact Us</h5>
           </div>
           <p>
             &#169; Old Town Coffee. All rights reserved Powered by Rashid Design{" "}
@@ -189,7 +198,7 @@ const StyledHomePage = styled.div`
     flex-direction: column;
     align-items: center;
     height: 100vh;
-    margin: 12px 0px;
+    margin: 0 0 12px 0;
     width: 95%;
     background-color: ${second};
     h2 {

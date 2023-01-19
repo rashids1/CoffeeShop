@@ -7,6 +7,9 @@ import "./index.css";
 import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage";
 import InConstruction from "./pages/InConstruction";
+import AboutUs from "./pages/AboutUs";
+
+import TypeOfCoffee from "./pages/TypesOfCoffee";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +20,16 @@ const router = createBrowserRouter([
   {
     path: "/under-construction",
     element: <InConstruction />,
+  },
+  {
+    path: "/About-us",
+    element: <AboutUs />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/types-of-coffee",
+    element: <TypeOfCoffee />,
+    errorElement: <ErrorPage />,
   },
 ]);
 
