@@ -8,10 +8,12 @@ import walpaper from "../pictures/walpaper.png";
 import Carousel from "./components/Carousel.js";
 import coffeeShop from "../pictures/coffeeShop.jpg";
 import Drawer from "./components/Drawer";
+import { useNavigate } from "react-router";
 
 const { main, second, third, white } = colors;
 
 const Home = () => {
+  const navigate = useNavigate();
   const bodyStyle = document.body.style;
   const [visibleDrawer, setVisibleDrawer] = useState(false);
   const hideDrawer = () => {
@@ -90,7 +92,7 @@ const Home = () => {
           </div>
           <div className="footer-block-2">
             <h3>Get in Touch</h3>
-            <h5>FAQ</h5>
+            <h5 onClick={() => navigate("/under-construction")}>FAQ</h5>
             <h5>CONTACT US</h5>
           </div>
           <p>
@@ -233,6 +235,12 @@ const StyledHomePage = styled.div`
     }
     p {
       margin-top: 60px;
+      font-size: 0.65em;
+    }
+
+    h5 {
+      font-weight: 500;
+      font-size: 0.85em;
     }
   }
 `;
