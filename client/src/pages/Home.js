@@ -272,7 +272,7 @@ const StyledHomePage = styled.div`
     }
   }
 
-  //media queries
+  //media queries//
   @media screen and (min-width: 450px) {
     .logo h5 {
       font-size: clamp(0.5rem, 4vw, 1.4rem);
