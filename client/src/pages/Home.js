@@ -118,6 +118,7 @@ const StyledHomePage = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${main};
+  min-width: 310px;
   width: 100%;
   align-items: center;
 
@@ -131,6 +132,7 @@ const StyledHomePage = styled.div`
     position: sticky;
     top: 0;
     z-index: 3;
+    border-bottom: solid 0.1px #bfbfbf;
 
     .navbar-content {
       display: flex;
@@ -143,9 +145,15 @@ const StyledHomePage = styled.div`
   .logo {
     display: flex;
     flex-direction: row;
+    align-items: center;
     img {
       margin-left: 10px;
-      width: 15%;
+      width: 150px;
+      max-width: 220px;
+      height: auto;
+    }
+    h5 {
+      font-size: 4vw;
     }
   }
 
@@ -159,13 +167,24 @@ const StyledHomePage = styled.div`
     flex-direction: column;
 
     button {
-      color: black;
-      font-size: 1em;
       width: 40%;
       align-self: center;
-      border-radius: 6px;
+      background-color: #fbeee0;
+      border: 2px solid #422800;
+      border-radius: 30px;
+      box-shadow: #ad5c05 0px 0px 0px 1.5px;
+      color: #422800;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1em;
+      padding: 0 18px;
+      line-height: 50px;
+      text-align: center;
+      text-decoration: none;
+      user-select: none;
     }
   }
+
   .title {
     color: ${main};
     font-size: 5em;
@@ -250,6 +269,13 @@ const StyledHomePage = styled.div`
     h5 {
       font-weight: 500;
       font-size: 0.85em;
+    }
+  }
+
+  //media queries
+  @media screen and (min-width: 450px) {
+    .logo h5 {
+      font-size: clamp(0.5rem, 4vw, 1.4rem);
     }
   }
 `;
